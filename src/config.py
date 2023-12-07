@@ -7,6 +7,7 @@ CAMERA_CONFIGS = [
         'index' : 0,
         'width' : 640,
         'height' : 480,
+        'FPS ' : 30
     }
 ]
 

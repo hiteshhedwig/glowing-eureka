@@ -11,6 +11,7 @@ class Camera(object):
         self.cap = cv2.VideoCapture(index)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+        log.info(f"Opened camera with index: {index}, width  : {self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)}, height : {self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)}, FPS : {self.cap.get(cv2.CAP_PROP_FPS)},")
 
     def get_frame(self):
         ret, frame = self.cap.read()
