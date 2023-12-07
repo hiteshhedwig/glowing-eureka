@@ -35,5 +35,6 @@ if __name__ == '__main__':
     # 1. Create streamer object
     # 2. Open and get images
     # 3. Save with correct convention
-    # log.add("tracebacks/file_{time}.log", format="{time} {level} {message}", level="INFO", rotation="50 MB")
+    if ENABLE_TRACEBACK_SAVE:
+        log.add("tracebacks/file_{time}.log", format="{time} {level} {message}", level="INFO", rotation="50 MB")
     main()

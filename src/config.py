@@ -1,5 +1,7 @@
 # CAMERA
 
+ENABLE_TRACEBACK_SAVE = False
+
 CAMERA_CONFIGS = [
     {
         'index' : 0,
@@ -14,3 +16,4 @@ VEHICLE = "f8"
 CAMERA_LENS = "webcam"
 
 PREFIX_PATH = "data/"
+
