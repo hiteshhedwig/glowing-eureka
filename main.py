@@ -9,14 +9,17 @@ def loop(streamer, camera_indices):
     while True:
         frame = streamer.get_frames(camera_indices[0])
         save = counter.is_checkpoint()
-        if frame is not None and save :
-            filename = generate_filename(
-                purpose    = PURPOSE,
-                vehicle    = VEHICLE,
-                cameralens = CAMERA_LENS,
-                idx        = counter.get_count()
-            )
-            streamer.save_image(frame, filename)
+        try : 
+            if save : 
+                filename = generate_filename(
+                    purpose    = PURPOSE,
+                    vehicle    = VEHICLE,
+                    cameralens = CAMERA_LENS,
+                    idx        = counter.get_count()
+                )
+                streamer.save_image(frame, filename)
+        except Exception as e :
+            log.warning(f"faced an exception - {e}")
 
 def main():
     log.info(f"Initiating the logging...")
@@ -26,7 +29,6 @@ def main():
     log.info(f"Camera indices accessed by the system : {camera_indices}")
 
     loop(streamer, camera_indices)
-    
 
 
 if __name__ == '__main__':

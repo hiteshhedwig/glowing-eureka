@@ -1,8 +1,11 @@
+from loguru import logger as log
+
 class Counter():
     def __init__(self, checkpoint=100):
         self.count = 0
         self.checkpoint = checkpoint
         self.last_count = 0
+        log.info("Counter initialized, setting checkpoint at %s" % self.checkpoint)
 
     def increment(self):
         self.count += 1
