@@ -8,10 +8,18 @@ class Camera(object):
         width = kwargs.get('width', 640)
         height = kwargs.get('height', 480)
 
+        log.debug(f"index  : {index}")
+        log.debug(f"width  : {width}")
+        log.debug(f"height : {height}")
+
         self.cap = cv2.VideoCapture(index)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-        log.info(f"Opened camera with index: {index}, width  : {self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)}, height : {self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)}, FPS : {self.cap.get(cv2.CAP_PROP_FPS)},")
+
+        if self.is_opened():
+            log.success(f"Opened camera with index: {index}, width  : {self.cap.get(cv2.CAP_PROP_FRAME_WIDTH)}, height : {self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT)}, FPS : {self.cap.get(cv2.CAP_PROP_FPS)}")
+        else :
+            log.trace(f"Error opening camera with index : {index}")
 
     def get_frame(self):
         ret, frame = self.cap.read()
